@@ -1,0 +1,346 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Working with data in Python &mdash; Introduction to Programming for Data Science  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=e9df6548" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+      <link rel="stylesheet" type="text/css" href="../_static/style.css?v=e4194741" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=187304be"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Plotting with Vega-Altair" href="../plotting/" />
+    <link rel="prev" title="R basics" href="../r-basics/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            Introduction to Programming for Data Science
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Episodes</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro_to_programming/">Basics of Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../jupyter/">Jupyter Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python-basics/">Python basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r-basics/">R basics</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Working with data in Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#reading-data-into-a-dataframe">Reading data into a dataframe</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#data-preprocessing">Data preprocessing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-in-a-dataframe">What is in a dataframe?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-makes-python-and-pandas-better-than-excel">What makes Python and pandas better than Excel?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#where-to-learn-more-about-pandas">Where to learn more about pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#other-python-libraries-for-tabular-data">Other Python libraries for tabular data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#libraries-for-other-types-of-data">Libraries for other types of data</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../plotting/">Plotting with Vega-Altair</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/">Software install instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../colab/">Going through the course using Google Colab</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other materials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tidy-data/">Tidy data and dealing with messy data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../customizing-plots/">Customizing plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/">Learning how to adapt existing gallery examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sharing/">Sharing plots and notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parsing-custom-format/">Reading data in custom format</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Introduction to Programming for Data Science</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Working with data in Python</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/coderefinery/programming4ds/blob/main/content/data.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="working-with-data-in-python">
+<h1>Working with data in Python<a class="headerlink" href="#working-with-data-in-python" title="Link to this heading"></a></h1>
+<div class="admonition-objectives objectives admonition" id="objectives-0">
+<p class="admonition-title">Objectives</p>
+<ul class="simple">
+<li><p>Understanding how to structure data in your projects</p></li>
+<li><p>Reading data with Pandas from disk or a web resource</p></li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Example data: Weather data from two Norwegian cities</p>
+<p>We will experiment with some example weather data obtained from <a class="reference external" href="https://seklima.met.no/observations/">Norsk
+KlimaServiceSenter</a>, Meteorologisk
+institutt (MET) (CC BY 4.0).  The data is in CSV format (comma-separated
+values) and contains daily and monthly weather data for two cities in Norway:
+Oslo and Tromsø. You can browse the data
+<a class="reference external" href="https://github.com/coderefinery/data-visualization-python/tree/main/data">here in the lesson repository</a>.</p>
+<p>We will use the Pandas library to read the data into a dataframe.</p>
+<p>Pandas can read from and write to a large set of formats
+(<a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/io.html">overview of input/output functions and formats</a>).
+We will load a CSV file directly from the web. Instead of using a web URL we
+could use a local file name instead.</p>
+<p>Pandas dataframes are a great data structure for <strong>tabular data</strong>.</p>
+</div>
+<section id="reading-data-into-a-dataframe">
+<h2>Reading data into a dataframe<a class="headerlink" href="#reading-data-into-a-dataframe" title="Link to this heading"></a></h2>
+<p>We can try this together in a notebook:
+Using Pandas we can <strong>merge, join, concatenate, and compare</strong>
+dataframes, see <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/merging.html">https://pandas.pydata.org/pandas-docs/stable/user_guide/merging.html</a>.</p>
+<p>Let us try to <strong>concatenate</strong> two dataframes: one for Tromsø weather data (we
+will now load monthly values) and one for Oslo:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">url_prefix</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/coderefinery/data-visualization-python/main/data/&quot;</span>
+
+<span class="n">data_tromso</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url_prefix</span> <span class="o">+</span> <span class="s2">&quot;tromso-monthly.csv&quot;</span><span class="p">)</span>
+<span class="n">data_oslo</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url_prefix</span> <span class="o">+</span> <span class="s2">&quot;oslo-monthly.csv&quot;</span><span class="p">)</span>
+
+<span class="hll"><span class="n">data_monthly</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">data_tromso</span><span class="p">,</span> <span class="n">data_oslo</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span>
+<span class="c1"># let us print the combined result</span>
+<span class="n">data_monthly</span>
+</pre></div>
+</div>
+<section id="data-preprocessing">
+<h3>Data preprocessing<a class="headerlink" href="#data-preprocessing" title="Link to this heading"></a></h3>
+<p>There is a problem which we may not see yet: Dates
+are not in a standard date format (YYYY-MM-DD). We can fix this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># replace mm.yyyy to date format</span>
+<span class="n">data_monthly</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">data_monthly</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]),</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;%m.%Y&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>With Pandas it is possible to do a lot more (adjusting missing values, fixing
+inconsistencies, changing format).</p>
+</section>
+</section>
+<section id="what-is-in-a-dataframe">
+<h2>What is in a dataframe?<a class="headerlink" href="#what-is-in-a-dataframe" title="Link to this heading"></a></h2>
+<p>The name pandas is derived from the term “<strong>pan</strong>el <strong>da</strong>ta”.</p>
+<figure class="align-default" id="id1">
+<img alt="A pandas dataframe object is composed of rows and columns." src="../_images/dataframe.svg" />
+<figcaption>
+<p><span class="caption-text">A pandas dataframe object is composed of rows and columns.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Let us explore these together in the notebook (run these in separate cells):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># print an overview of the dataset</span>
+<span class="n">data_monthly</span>
+
+<span class="c1"># print the first 5 rows</span>
+<span class="n">data_monthly</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="c1"># print the last 5 rows</span>
+<span class="n">data_monthly</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+
+<span class="c1"># print all column titles - no parentheses here</span>
+<span class="n">data_monthly</span><span class="o">.</span><span class="n">columns</span>
+
+<span class="c1"># show which data types were detected</span>
+<span class="n">data_monthly</span><span class="o">.</span><span class="n">dtypes</span>
+
+<span class="c1"># print table dimensions - no parentheses here</span>
+<span class="n">data_monthly</span><span class="o">.</span><span class="n">shape</span>
+
+<span class="c1"># print one column</span>
+<span class="n">data_monthly</span><span class="p">[</span><span class="s2">&quot;max temperature&quot;</span><span class="p">]</span>
+
+<span class="c1"># get some statistics</span>
+<span class="n">data_monthly</span><span class="p">[</span><span class="s2">&quot;max temperature&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+
+<span class="c1"># what was the maximum temperature?</span>
+<span class="n">data_monthly</span><span class="p">[</span><span class="s2">&quot;max temperature&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+<span class="c1"># print all rows where max temperature was above 20</span>
+<span class="n">data_monthly</span><span class="p">[</span><span class="n">data_monthly</span><span class="p">[</span><span class="s2">&quot;max temperature&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">20.0</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="what-makes-python-and-pandas-better-than-excel">
+<h2>What makes Python and pandas better than Excel?<a class="headerlink" href="#what-makes-python-and-pandas-better-than-excel" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Automation</strong>: Python scripts can be reused and automated, reducing repetitive tasks.</p></li>
+<li><p><strong>Scalability</strong>: Excel struggles with large datasets, while pandas handles millions of rows efficiently.</p></li>
+<li><p><strong>Version control</strong>: Code and data processing steps can be tracked using Git.</p></li>
+<li><p><strong>Reproducibility</strong>: Your workflow can be repeated or shared exactly by others.</p></li>
+<li><p><strong>Visualization and analysis</strong>: Seamless integration with powerful libraries like matplotlib, seaborn, and statsmodels.</p></li>
+<li><p><strong>Error prevention</strong>: Fewer manual steps mean fewer opportunities for copy-paste mistakes.</p></li>
+<li><p><strong>Integration</strong>: Easily connects with databases, APIs, and other formats like JSON, HDF5, etc.</p></li>
+</ul>
+</section>
+<section id="where-to-learn-more-about-pandas">
+<h2>Where to learn more about pandas<a class="headerlink" href="#where-to-learn-more-about-pandas" title="Link to this heading"></a></h2>
+<p>Pandas is extremely powerful and there is a lot that can be done and there are
+great resources to explore more:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pandas.pydata.org/getting_started.html">Getting started guide</a>
+(including tutorials and a 10 minute flash intro)</p></li>
+<li><p><a class="reference external" href="https://pandas.pydata.org/docs/user_guide/10min.html">10 minutes to pandas tutorial</a></p></li>
+<li><p><a class="reference external" href="https://pandas.pydata.org/docs/">Pandas documentation</a></p></li>
+<li><p><a class="reference external" href="https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf">Cheatsheet</a></p></li>
+<li><p><a class="reference external" href="https://pandas.pydata.org/docs/user_guide/cookbook.html#cookbook">Cookbook</a></p></li>
+<li><p><a class="reference external" href="https://datacarpentry.org/python-ecology-lesson/">Data Carpentry lesson</a> “Data Analysis and Visualization in Python for Ecologists”
+(useful not only for ecologists)</p></li>
+</ul>
+<div class="admonition-exercise-work-with-tabular-data-using-python exercise important admonition" id="exercise-0">
+<p class="admonition-title">Exercise - Work with tabular data using Python</p>
+<p>You might be an Excel expert, but how about doing the same things you do with Excel with python? What is in your opinion the biggest advantage compared to doing it with Excel?</p>
+<ol class="arabic simple">
+<li><p>Try running some of the  commands above in a jupyter notebook and look at their output</p></li>
+<li><p>Calculate the median of the column “max temperature”. What is its value? To know how to calculate the median, check the documentation of <a class="reference external" href="https://pandas.pydata.org/docs/reference/frame.html">Pandas DataFrame class</a>.</p></li>
+<li><p>Sort the data by the column “max temperature”. Which city was the hottest? Use the Pandas documentation to know how to sort.</p></li>
+<li><p>(Advanced) Compute the differences of max temperatures between Olso and Tromsø for each month (hint: you will need to make a pivot table…)</p></li>
+</ol>
+</div>
+<div class="admonition-solution solution important dropdown admonition" id="solution-0">
+<p class="admonition-title">Solution</p>
+<ol class="arabic simple" start="2">
+<li><p><strong>Calculate the median of the column “max temperature”.</strong></p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data_monthly</span><span class="p">[</span><span class="s2">&quot;max temperature&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p><strong>Sort the data by the column “max temperature”. Which city was the hottest?</strong></p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sorted_data</span> <span class="o">=</span> <span class="n">data_monthly</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;max temperature&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">sorted_data</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p><strong>(Advanced) Compute the differences of max temperatures between Oslo and Tromsø for each month</strong></p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pivot_df</span> <span class="o">=</span> <span class="n">data_monthly</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;max temperature&#39;</span><span class="p">)</span>
+<span class="n">pivot_df</span><span class="p">[</span><span class="s1">&#39;Temperature_Difference&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pivot_df</span><span class="p">[</span><span class="s1">&#39;Oslo - Blindern&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">pivot_df</span><span class="p">[</span><span class="s1">&#39;Tromso - Langnes&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pivot_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="other-python-libraries-for-tabular-data">
+<h2>Other Python libraries for tabular data<a class="headerlink" href="#other-python-libraries-for-tabular-data" title="Link to this heading"></a></h2>
+<p>Besides pandas, here are a few other libraries useful for working with tabular data:</p>
+<ul class="simple">
+<li><p><strong>Polars</strong>: Fast DataFrame library written in Rust, great for large datasets.</p></li>
+<li><p><strong>Dask</strong>: Scales pandas workflows to larger-than-memory datasets and parallel computation.</p></li>
+<li><p><strong>Vaex</strong>: Optimized for lazy evaluation and memory-efficient handling of huge tabular datasets.</p></li>
+<li><p><strong>PySpark</strong>: Python API for Apache Spark, useful for distributed data processing.</p></li>
+<li><p><strong>datatable</strong>: High-performance library for large data processing with R-style syntax.</p></li>
+</ul>
+</section>
+<section id="libraries-for-other-types-of-data">
+<h2>Libraries for other types of data<a class="headerlink" href="#libraries-for-other-types-of-data" title="Link to this heading"></a></h2>
+<p>Here are some popular Python libraries for working with non-tabular data:</p>
+<ul class="simple">
+<li><p><strong>JSON and structured text</strong>: <code class="docutils literal notranslate"><span class="pre">json</span></code>, <code class="docutils literal notranslate"><span class="pre">orjson</span></code>, <code class="docutils literal notranslate"><span class="pre">pydantic</span></code></p></li>
+<li><p><strong>Plain text and NLP</strong>: <code class="docutils literal notranslate"><span class="pre">nltk</span></code>, <code class="docutils literal notranslate"><span class="pre">spacy</span></code>, <code class="docutils literal notranslate"><span class="pre">transformers</span></code>, <code class="docutils literal notranslate"><span class="pre">re</span></code> (regex)</p></li>
+<li><p><strong>Images</strong>: <code class="docutils literal notranslate"><span class="pre">Pillow</span></code>, <code class="docutils literal notranslate"><span class="pre">OpenCV</span></code>, <code class="docutils literal notranslate"><span class="pre">imageio</span></code>, <code class="docutils literal notranslate"><span class="pre">scikit-image</span></code></p></li>
+<li><p><strong>Videos</strong>: <code class="docutils literal notranslate"><span class="pre">OpenCV</span></code>, <code class="docutils literal notranslate"><span class="pre">moviepy</span></code>, <code class="docutils literal notranslate"><span class="pre">ffmpeg-python</span></code></p></li>
+<li><p><strong>Audio and sound</strong>: <code class="docutils literal notranslate"><span class="pre">librosa</span></code>, <code class="docutils literal notranslate"><span class="pre">pydub</span></code>, <code class="docutils literal notranslate"><span class="pre">torchaudio</span></code>, <code class="docutils literal notranslate"><span class="pre">wave</span></code></p></li>
+<li><p><strong>Scientific data formats</strong>: <code class="docutils literal notranslate"><span class="pre">h5py</span></code>, <code class="docutils literal notranslate"><span class="pre">netCDF4</span></code>, <code class="docutils literal notranslate"><span class="pre">xarray</span></code></p></li>
+<li><p><strong>Geospatial data</strong>: <code class="docutils literal notranslate"><span class="pre">geopandas</span></code>, <code class="docutils literal notranslate"><span class="pre">shapely</span></code>, <code class="docutils literal notranslate"><span class="pre">rasterio</span></code>, <code class="docutils literal notranslate"><span class="pre">fiona</span></code></p></li>
+</ul>
+<p>These libraries can be combined with pandas or used standalone to handle more complex, real-world data types.</p>
+<hr class="docutils" />
+<div class="admonition-keypoints keypoints admonition" id="keypoints-0">
+<p class="admonition-title">Keypoints</p>
+<ul class="simple">
+<li><p>Loading data with python is easy and through Jupyter notebooks one can interact and understand the data at hand</p></li>
+<li><p>Pandas are the most popular option when dealing with tabular data</p></li>
+<li><p>There are many more types of data and libraries available, please explore which data you would like to load.</p></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../r-basics/" class="btn btn-neutral float-left" title="R basics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../plotting/" class="btn btn-neutral float-right" title="Plotting with Vega-Altair" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright CodeRefinery project.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

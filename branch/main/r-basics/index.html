@@ -1,0 +1,436 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>R basics &mdash; Introduction to Programming for Data Science  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=e9df6548" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+      <link rel="stylesheet" type="text/css" href="../_static/style.css?v=e4194741" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=187304be"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Working with data in Python" href="../data/" />
+    <link rel="prev" title="Python basics" href="../python-basics/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            Introduction to Programming for Data Science
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Episodes</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro_to_programming/">Basics of Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../jupyter/">Jupyter Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python-basics/">Python basics</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">R basics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#motivation-for-r">Motivation for R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#basic-types">Basic types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-structures-for-collections-vectors-lists-data-frames-and-sets">Data structures for collections: vectors, lists, data frames, and sets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#iterating-over-collections">Iterating over collections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reading-error-messages">Reading error messages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#libraries">Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#great-resources-to-learn-more">Great resources to learn more</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exercises">Exercises</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../data/">Working with data in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plotting/">Plotting with Vega-Altair</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/">Software install instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../colab/">Going through the course using Google Colab</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other materials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tidy-data/">Tidy data and dealing with messy data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../customizing-plots/">Customizing plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/">Learning how to adapt existing gallery examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sharing/">Sharing plots and notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parsing-custom-format/">Reading data in custom format</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Introduction to Programming for Data Science</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">R basics</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/coderefinery/programming4ds/blob/main/content/r-basics.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="r-basics">
+<h1>R basics<a class="headerlink" href="#r-basics" title="Link to this heading"></a></h1>
+<div class="admonition-objectives objectives admonition" id="objectives-0">
+<p class="admonition-title">Objectives</p>
+<ul class="simple">
+<li><p>Knowing what types exist in R</p></li>
+<li><p>Knowing the most common data structures: vectors, lists, data frames, and sets</p></li>
+<li><p>Creating and using functions</p></li>
+<li><p>Knowing what a library is</p></li>
+<li><p>Knowing what <code class="docutils literal notranslate"><span class="pre">library()</span></code> does</p></li>
+<li><p>Being able to “read” an error</p></li>
+</ul>
+</div>
+<section id="motivation-for-r">
+<h2>Motivation for R<a class="headerlink" href="#motivation-for-r" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Free</strong></p></li>
+<li><p>Huge <strong>ecosystem of examples, libraries, and tools</strong></p></li>
+<li><p>Relatively easy to read and understand</p></li>
+<li><p>Similar in scope and use cases to Python, Julia, and Matlab</p></li>
+</ul>
+</section>
+<section id="basic-types">
+<h2>Basic types<a class="headerlink" href="#basic-types" title="Link to this heading"></a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># integer</span>
+<span class="n">num_measurements</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">13L</span>
+
+<span class="c1"># numeric (float)</span>
+<span class="n">some_fraction</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">0.25</span>
+
+<span class="c1"># character (string)</span>
+<span class="n">name</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;Bruce Wayne&quot;</span>
+
+<span class="c1"># logical (bool)</span>
+<span class="n">value_is_missing</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kc">FALSE</span>
+<span class="n">skip_verification</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kc">TRUE</span>
+
+<span class="c1"># we can print values</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+<span class="c1"># arithmetic operations with integers and numeric values</span>
+<span class="nf">print</span><span class="p">(</span><span class="m">5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">num_measurements</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="m">1.0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">some_fraction</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>R is <strong>dynamically typed</strong>:
+We do not have to define that an integer is an <code class="docutils literal notranslate"><span class="pre">integer</span></code>, we can use it directly,
+and R will infer it.</p></li>
+<li><p>Comments in R use the <code class="docutils literal notranslate"><span class="pre">#</span></code> symbol.</p></li>
+</ul>
+</section>
+<section id="data-structures-for-collections-vectors-lists-data-frames-and-sets">
+<h2>Data structures for collections: vectors, lists, data frames, and sets<a class="headerlink" href="#data-structures-for-collections-vectors-lists-data-frames-and-sets" title="Link to this heading"></a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># vectors (similar to Python lists, important for ordered elements)</span>
+<span class="n">scores</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">13</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">)</span>
+
+<span class="c1"># first element</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">scores</span><span class="p">[</span><span class="m">1</span><span class="p">])</span>
+
+<span class="c1"># add items to vectors</span>
+<span class="n">scores</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">)</span>
+
+<span class="c1"># sort vectors</span>
+<span class="n">scores</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sort</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span>
+
+<span class="c1"># lists are useful to store collections with named elements</span>
+<span class="n">experiment</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Svalbard&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">date</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;2021-03-23&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">num_measurements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">23</span><span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="n">experiment</span><span class="o">$</span><span class="n">date</span><span class="p">)</span>
+
+<span class="c1"># add items to lists</span>
+<span class="n">experiment</span><span class="o">$</span><span class="n">instrument</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;a particular brand&quot;</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">experiment</span><span class="p">)</span>
+
+<span class="kr">if</span><span class="w"> </span><span class="p">(</span><span class="s">&quot;instrument&quot;</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="nf">names</span><span class="p">(</span><span class="n">experiment</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nf">print</span><span class="p">(</span><span class="s">&quot;yes, the list &#39;experiment&#39; contains the element &#39;instrument&#39;&quot;</span><span class="p">)</span>
+<span class="p">}</span><span class="w"> </span><span class="kr">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nf">print</span><span class="p">(</span><span class="s">&quot;no, it doesn&#39;t&quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Vectors</strong> are good when order matters and elements are homogeneous.</p></li>
+<li><p><strong>Lists</strong> allow heterogeneous elements and are named collections.</p></li>
+<li><p><strong>Data frames</strong> are like tables.</p></li>
+<li><p><strong>Sets</strong> (<code class="docutils literal notranslate"><span class="pre">unique()</span></code> function or <code class="docutils literal notranslate"><span class="pre">sets</span></code> package) for collections without repetition.</p></li>
+</ul>
+<p>You can nest:</p>
+<ul class="simple">
+<li><p>lists inside vectors</p></li>
+<li><p>vectors inside lists</p></li>
+<li><p>data frames inside lists</p></li>
+<li><p>lists inside data frames</p></li>
+<li><p>…</p></li>
+</ul>
+</section>
+<section id="iterating-over-collections">
+<h2>Iterating over collections<a class="headerlink" href="#iterating-over-collections" title="Link to this heading"></a></h2>
+<p>Iterating over a vector:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">scores</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">13</span><span class="p">,</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">)</span>
+
+<span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">score</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="n">scores</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nf">print</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1"># example with string formatting</span>
+<span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">score</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="n">scores</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nf">print</span><span class="p">(</span><span class="nf">sprintf</span><span class="p">(</span><span class="s">&quot;the score is %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">score</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Iterating over a list:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">experiment</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Svalbard&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">date</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;2021-03-23&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">num_measurements</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">23</span><span class="p">)</span>
+
+<span class="c1"># iterating over values</span>
+<span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="n">experiment</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nf">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1"># iterating over names and values</span>
+<span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">key</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nf">names</span><span class="p">(</span><span class="n">experiment</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">experiment</span><span class="p">[[</span><span class="n">key</span><span class="p">]]))</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
+<ul>
+<li><p>Functions are like <strong>reusable recipes</strong>. They receive input arguments, perform operations, and return a result.</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">add</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">result</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span>
+<span class="w">  </span><span class="kr">return</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p>Function summing elements in a vector:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">add_all_elements</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">sequence</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">s</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">0.0</span>
+<span class="w">  </span><span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">element</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="n">sequence</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">s</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">element</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="kr">return</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">measurements</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">6</span><span class="p">,</span><span class="m">7</span><span class="p">,</span><span class="m">8</span><span class="p">,</span><span class="m">9</span><span class="p">,</span><span class="m">10</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">add_all_elements</span><span class="p">(</span><span class="n">measurements</span><span class="p">))</span>
+</pre></div>
+</div>
+</li>
+<li><p>Function computing the mean:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">arithmetic_mean</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">sequence</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">s</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">add_all_elements</span><span class="p">(</span><span class="n">sequence</span><span class="p">)</span>
+<span class="w">  </span><span class="n">n</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">length</span><span class="p">(</span><span class="n">sequence</span><span class="p">)</span>
+<span class="w">  </span><span class="kr">return</span><span class="p">(</span><span class="n">s</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">n</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">measurements</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">6</span><span class="p">,</span><span class="m">7</span><span class="p">,</span><span class="m">8</span><span class="p">,</span><span class="m">9</span><span class="p">,</span><span class="m">10</span><span class="p">)</span>
+<span class="n">mean</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">arithmetic_mean</span><span class="p">(</span><span class="n">measurements</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">mean</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Functions calling other functions and returning multiple values:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">uppercase_and_lowercase</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">u</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">toupper</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="w">  </span><span class="n">l</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">tolower</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="w">  </span><span class="kr">return</span><span class="p">(</span><span class="nf">list</span><span class="p">(</span><span class="n">upper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">u</span><span class="p">,</span><span class="w"> </span><span class="n">lower</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">l</span><span class="p">))</span>
+<span class="p">}</span>
+
+<span class="n">some_text</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;SequenceOfCharacters&quot;</span>
+<span class="n">text_cases</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">uppercase_and_lowercase</span><span class="p">(</span><span class="n">some_text</span><span class="p">)</span>
+
+<span class="nf">print</span><span class="p">(</span><span class="n">text_cases</span><span class="o">$</span><span class="n">upper</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">text_cases</span><span class="o">$</span><span class="n">lower</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p><strong>Why functions?</strong> Reduce repetition and simplify understanding of the code.</p>
+</section>
+<section id="reading-error-messages">
+<h2>Reading error messages<a class="headerlink" href="#reading-error-messages" title="Link to this heading"></a></h2>
+<p>Here we introduce a mistake and try to understand the traceback:</p>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/error1.png"><img alt="Example error traceback" src="../_images/error1.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Example error traceback. Can you explain the error?</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="libraries">
+<h2>Libraries<a class="headerlink" href="#libraries" title="Link to this heading"></a></h2>
+<p>Libraries are collections of functions. We load libraries to reuse functions defined in them.</p>
+<p>Try this:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">stats</span><span class="p">)</span>
+
+<span class="n">measurements</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">6</span><span class="p">,</span><span class="m">7</span><span class="p">,</span><span class="m">8</span><span class="p">,</span><span class="m">9</span><span class="p">,</span><span class="m">10</span><span class="p">)</span>
+<span class="n">result</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sd</span><span class="p">(</span><span class="n">measurements</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Often, libraries are loaded directly:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can create your own libraries (packages) with functions for reuse.</p>
+</section>
+<section id="great-resources-to-learn-more">
+<h2>Great resources to learn more<a class="headerlink" href="#great-resources-to-learn-more" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://r4ds.hadley.nz/">R for Data Science</a> (great for beginners)</p></li>
+<li><p><a class="reference external" href="https://cran.r-project.org/manuals.html">The R Manuals</a> (great for beginners)</p></li>
+<li><p><a class="reference external" href="https://adv-r.hadley.nz/">Advanced R</a> (intermediate level)</p></li>
+</ul>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading"></a></h2>
+<div class="admonition-exercise-create-a-function-that-computes-the-standard-deviation exercise important admonition" id="exercise-0">
+<p class="admonition-title">Exercise: create a function that computes the standard deviation</p>
+<ul>
+<li><p>Arithmetic mean:</p>
+<div class="math notranslate nohighlight">
+\[\bar{x} = \frac{1}{N} \sum_{i=1}^N x_i\]</div>
+</li>
+<li><p>Standard deviation:</p>
+<div class="math notranslate nohighlight">
+\[\sqrt{ \frac{1}{N} \sum_{i=1}^N (x_i - \bar{x})^2 }\]</div>
+</li>
+<li><p>Take this as starting point:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">arithmetic_mean</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">sequence</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nf">mean</span><span class="p">(</span><span class="n">sequence</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">standard_deviation</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">sequence</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1"># your code here</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="admonition-solution solution important dropdown admonition" id="solution-0">
+<p class="admonition-title">Solution</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">standard_deviation</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">sequence</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">mean</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">arithmetic_mean</span><span class="p">(</span><span class="n">sequence</span><span class="p">)</span>
+<span class="w">  </span><span class="nf">sqrt</span><span class="p">(</span><span class="nf">mean</span><span class="p">((</span><span class="n">sequence</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">mean</span><span class="p">)</span><span class="o">^</span><span class="m">2</span><span class="p">))</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition-exercise-working-with-a-named-list exercise important admonition" id="exercise-1">
+<p class="admonition-title">Exercise: working with a named list</p>
+<ul>
+<li><p>Add more names and grades:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">grades</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="n">Alice</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">80</span><span class="p">,</span><span class="w"> </span><span class="n">Bob</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">95</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Print, modify, and explore the list.</p></li>
+</ul>
+</div>
+<div class="admonition-solution solution important dropdown admonition" id="solution-1">
+<p class="admonition-title">Solution</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">grades</span><span class="o">$</span><span class="n">Craig</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">56</span>
+<span class="n">grades</span><span class="o">$</span><span class="n">Dave</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">28</span>
+<span class="n">grades</span><span class="o">$</span><span class="n">Eve</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">75</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">grades</span><span class="p">)</span>
+
+<span class="c1"># Accessing a specific grade</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">grades</span><span class="o">$</span><span class="n">Eve</span><span class="p">)</span>
+
+<span class="c1"># Names, values, and items</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">names</span><span class="p">(</span><span class="n">grades</span><span class="p">))</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">unlist</span><span class="p">(</span><span class="n">grades</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../python-basics/" class="btn btn-neutral float-left" title="Python basics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../data/" class="btn btn-neutral float-right" title="Working with data in Python" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright CodeRefinery project.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

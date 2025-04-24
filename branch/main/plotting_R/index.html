@@ -1,0 +1,351 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plotting with ggplot2 &mdash; Introduction to Programming for Data Science  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=e9df6548" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+      <link rel="stylesheet" type="text/css" href="../_static/style.css?v=e4194741" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=187304be"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            Introduction to Programming for Data Science
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Episodes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../intro_to_programming/">Basics of Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../jupyter/">Jupyter Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python-basics/">Python basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r-basics/">R basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/">Working with data in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plotting/">Plotting with Vega-Altair</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/">Software install instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../colab/">Going through the course using Google Colab</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other materials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tidy-data/">Tidy data and dealing with messy data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../customizing-plots/">Customizing plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/">Learning how to adapt existing gallery examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sharing/">Sharing plots and notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parsing-custom-format/">Reading data in custom format</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Introduction to Programming for Data Science</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Plotting with ggplot2</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/coderefinery/programming4ds/blob/main/content/plotting_R.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="plotting-with-ggplot2">
+<h1>Plotting with <a class="reference external" href="https://ggplot2.tidyverse.org/">ggplot2</a><a class="headerlink" href="#plotting-with-ggplot2" title="Link to this heading"></a></h1>
+<div class="admonition-objectives objectives admonition" id="objectives-0">
+<p class="admonition-title">Objectives</p>
+<ul class="simple">
+<li><p>Be able to create simple plots with ggplot2 and tweak them</p></li>
+<li><p>Know how to look for help</p></li>
+<li><p>Reading data into R from disk or web</p></li>
+<li><p>Know how to tweak example plots from a gallery for your own purpose</p></li>
+<li><p>We will build up an equivalent notebook to the original Python notebook</p></li>
+</ul>
+</div>
+<section id="repeatability-reproducibility">
+<h2>Repeatability/reproducibility<a class="headerlink" href="#repeatability-reproducibility" title="Link to this heading"></a></h2>
+<p>From <a class="reference external" href="https://clauswilke.com/dataviz/">Claus O. Wilke: “Fundamentals of Data Visualization”</a>:</p>
+<blockquote>
+<div><p><em>One thing I have learned over the years is that automation is your friend. I
+think figures should be autogenerated as part of the data analysis pipeline
+(which should also be automated), and they should come out of the pipeline
+ready to be sent to the printer, no manual post-processing needed.</em></p>
+</div></blockquote>
+<ul class="simple">
+<li><p><strong>Try to minimize manual post-processing</strong>. Automated visualization prevents last-minute regeneration panic.</p></li>
+<li><p>No single library or language is perfect for every use-case.</p></li>
+<li><p>In R, common visualization libraries include:</p>
+<ul>
+<li><p><a class="reference external" href="https://ggplot2.tidyverse.org/">ggplot2</a>: grammar of graphics</p></li>
+<li><p><a class="reference external" href="https://lattice.r-forge.r-project.org/">lattice</a>: grid-based graphics</p></li>
+<li><p><a class="reference external" href="https://plotly.com/r/">plotly</a>: interactive visualizations</p></li>
+<li><p><a class="reference external" href="https://jkunst.com/highcharter/">highcharter</a>: interactive visualizations based on Highcharts</p></li>
+<li><p><a class="reference external" href="https://rstudio.github.io/leaflet/">leaflet</a>: interactive maps</p></li>
+<li><p><a class="reference external" href="https://shiny.rstudio.com/">shiny</a>: interactive web apps</p></li>
+<li><p><a class="reference external" href="https://www.rdocumentation.org/packages/graphics">base R</a>: traditional graphics system</p></li>
+</ul>
+</li>
+<li><p>Two main visualization paradigms: procedural (base R) and declarative (ggplot2).</p></li>
+</ul>
+</section>
+<section id="why-are-we-starting-with-ggplot2">
+<h2>Why are we starting with <a class="reference external" href="https://ggplot2.tidyverse.org/">ggplot2</a>?<a class="headerlink" href="#why-are-we-starting-with-ggplot2" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Concise, powerful, and consistent grammar of graphics</p></li>
+<li><p>Intuitive mapping of visual aesthetics to data</p></li>
+<li><p>Easily integrates with data manipulation libraries like dplyr</p></li>
+<li><p>Well-documented, widely adopted, and open source</p></li>
+<li><p>Simple to export to multiple formats (png, svg, pdf)</p></li>
+</ul>
+</section>
+<section id="example-data-weather-data-from-two-norwegian-cities">
+<h2>Example data: Weather data from two Norwegian cities<a class="headerlink" href="#example-data-weather-data-from-two-norwegian-cities" title="Link to this heading"></a></h2>
+<p>We will use weather data from <a class="reference external" href="https://seklima.met.no/observations/">Norsk KlimaServiceSenter</a>, Meteorologisk institutt (MET) (CC BY 4.0). The data is in CSV format for Oslo and Tromsø:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/coderefinery/data-visualization-python/tree/main/data">View data repository</a></p></li>
+</ul>
+<p>We’ll load CSV files using <code class="docutils literal notranslate"><span class="pre">read.csv()</span></code> or directly from the web with <code class="docutils literal notranslate"><span class="pre">read.csv(url)</span></code>.</p>
+<p>Dataframes in R are excellent for tabular data and are directly usable with ggplot2.</p>
+</section>
+<section id="reading-data-into-a-dataframe">
+<h2>Reading data into a dataframe<a class="headerlink" href="#reading-data-into-a-dataframe" title="Link to this heading"></a></h2>
+<p>Let’s combine monthly data from two CSV files:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">url_prefix</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;https://raw.githubusercontent.com/coderefinery/data-visualization-python/main/data/&quot;</span>
+
+<span class="n">data_tromso</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="n">url_prefix</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;tromso-monthly.csv&quot;</span><span class="p">))</span>
+<span class="n">data_oslo</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="n">url_prefix</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;oslo-monthly.csv&quot;</span><span class="p">))</span>
+
+<span class="n">data_monthly</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">data_tromso</span><span class="p">,</span><span class="w"> </span><span class="n">data_oslo</span><span class="p">)</span>
+
+<span class="c1"># view combined data</span>
+<span class="n">data_monthly</span>
+</pre></div>
+</div>
+<p>Fixing date format:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">data_monthly</span><span class="o">$</span><span class="n">date</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.Date</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="s">&quot;01.&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">data_monthly</span><span class="o">$</span><span class="n">date</span><span class="p">),</span><span class="w"> </span><span class="n">format</span><span class="o">=</span><span class="s">&quot;%d.%m.%Y&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="what-is-in-a-dataframe">
+<h2>What is in a dataframe?<a class="headerlink" href="#what-is-in-a-dataframe" title="Link to this heading"></a></h2>
+<p>Dataframes contain rows and columns:</p>
+<p>Explore interactively in R:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">data_monthly</span><span class="p">)</span>
+<span class="nf">tail</span><span class="p">(</span><span class="n">data_monthly</span><span class="p">)</span>
+<span class="nf">names</span><span class="p">(</span><span class="n">data_monthly</span><span class="p">)</span>
+<span class="nf">str</span><span class="p">(</span><span class="n">data_monthly</span><span class="p">)</span>
+<span class="nf">dim</span><span class="p">(</span><span class="n">data_monthly</span><span class="p">)</span>
+<span class="n">data_monthly</span><span class="o">$</span><span class="n">max.temperature</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">data_monthly</span><span class="o">$</span><span class="n">max.temperature</span><span class="p">)</span>
+<span class="nf">max</span><span class="p">(</span><span class="n">data_monthly</span><span class="o">$</span><span class="n">max.temperature</span><span class="p">)</span>
+<span class="nf">subset</span><span class="p">(</span><span class="n">data_monthly</span><span class="p">,</span><span class="w"> </span><span class="n">max.temperature</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="where-to-learn-more-about-dataframes-in-r">
+<h2>Where to learn more about dataframes in R<a class="headerlink" href="#where-to-learn-more-about-dataframes-in-r" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://r4ds.hadley.nz/">R for Data Science</a></p></li>
+<li><p><a class="reference external" href="https://www.statmethods.net/management/index.html">Quick-R</a></p></li>
+<li><p><a class="reference external" href="https://datacarpentry.org/R-ecology-lesson/">Data Carpentry R lessons</a></p></li>
+</ul>
+</section>
+<section id="plotting-the-data">
+<h2>Plotting the data<a class="headerlink" href="#plotting-the-data" title="Link to this heading"></a></h2>
+<p>Simple plot:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">data_monthly</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">precipitation</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_bar</span><span class="p">(</span><span class="n">stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;identity&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;dodge&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Improve temporal axis:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ggplot</span><span class="p">(</span><span class="n">data_monthly</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">precipitation</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_bar</span><span class="p">(</span><span class="n">stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;identity&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;dodge&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">scale_x_date</span><span class="p">(</span><span class="n">date_labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;%Y-%m&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Plot side-by-side panels:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ggplot</span><span class="p">(</span><span class="n">data_monthly</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">precipitation</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_bar</span><span class="p">(</span><span class="n">stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;identity&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">facet_wrap</span><span class="p">(</span><span class="o">~</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Stacked bars:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ggplot</span><span class="p">(</span><span class="n">data_monthly</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">precipitation</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_bar</span><span class="p">(</span><span class="n">stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;identity&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Temperature range area plot:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ggplot</span><span class="p">(</span><span class="n">data_monthly</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">ymin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">min.temperature</span><span class="p">,</span><span class="w"> </span><span class="n">ymax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max.temperature</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_ribbon</span><span class="p">(</span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="exercise-using-visual-channels-to-re-arrange-plots">
+<h2>Exercise: Using visual channels to re-arrange plots<a class="headerlink" href="#exercise-using-visual-channels-to-re-arrange-plots" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Switch axes:</p></li>
+</ul>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ggplot</span><span class="p">(</span><span class="n">data_monthly</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">precipitation</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_bar</span><span class="p">(</span><span class="n">stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;identity&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">facet_wrap</span><span class="p">(</span><span class="o">~</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Change axis title:</p></li>
+</ul>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ggplot</span><span class="p">(</span><span class="n">data_monthly</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">precipitation</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_bar</span><span class="p">(</span><span class="n">stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;identity&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">facet_wrap</span><span class="p">(</span><span class="o">~</span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">labs</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Precipitation (mm)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Side-by-side temperature plots:</p></li>
+</ul>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ggplot</span><span class="p">(</span><span class="n">data_monthly</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">ymin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">min.temperature</span><span class="p">,</span><span class="w"> </span><span class="n">ymax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max.temperature</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_ribbon</span><span class="p">(</span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.5</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">facet_wrap</span><span class="p">(</span><span class="o">~</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="more-fun-with-visual-channels">
+<h2>More fun with visual channels<a class="headerlink" href="#more-fun-with-visual-channels" title="Link to this heading"></a></h2>
+<p>Read daily data:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">data_tromso_daily</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="n">url_prefix</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;tromso-daily.csv&quot;</span><span class="p">))</span>
+<span class="n">data_oslo_daily</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="nf">paste0</span><span class="p">(</span><span class="n">url_prefix</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;oslo-daily.csv&quot;</span><span class="p">))</span>
+<span class="n">data_daily</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">data_tromso_daily</span><span class="p">,</span><span class="w"> </span><span class="n">data_oslo_daily</span><span class="p">)</span>
+<span class="n">data_daily</span><span class="o">$</span><span class="n">date</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.Date</span><span class="p">(</span><span class="n">data_daily</span><span class="o">$</span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">format</span><span class="o">=</span><span class="s">&quot;%d.%m.%Y&quot;</span><span class="p">)</span>
+<span class="n">data_daily</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">data_daily</span><span class="p">,</span><span class="w"> </span><span class="n">date</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="s">&quot;2022-12-01&quot;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">date</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="s">&quot;2023-05-01&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Snow depth plot:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ggplot</span><span class="p">(</span><span class="n">data_daily</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">snow.depth</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">name</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_bar</span><span class="p">(</span><span class="n">stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;identity&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">facet_wrap</span><span class="p">(</span><span class="o">~</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Color by temperature:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ggplot</span><span class="p">(</span><span class="n">data_daily</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">snow.depth</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max.temperature</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">facet_wrap</span><span class="p">(</span><span class="o">~</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Change color scheme:</p>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ggplot</span><span class="p">(</span><span class="n">data_daily</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">date</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">snow.depth</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max.temperature</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">facet_wrap</span><span class="p">(</span><span class="o">~</span><span class="n">name</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">scale_color_viridis_c</span><span class="p">(</span><span class="n">option</span><span class="o">=</span><span class="s">&quot;plasma&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="themes">
+<h2>Themes<a class="headerlink" href="#themes" title="Link to this heading"></a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># dark theme</span>
+<span class="nf">theme_set</span><span class="p">(</span><span class="nf">theme_dark</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>Other themes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">theme_classic()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">theme_minimal()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">theme_bw()</span></code></p></li>
+</ul>
+</section>
+<section id="exercise-anscombe-s-quartet">
+<h2>Exercise: Anscombe’s quartet<a class="headerlink" href="#exercise-anscombe-s-quartet" title="Link to this heading"></a></h2>
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;example.csv&quot;</span><span class="p">)</span>
+
+<span class="nf">ggplot</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="o">=</span><span class="n">dataset</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">facet_wrap</span><span class="p">(</span><span class="o">~</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<div class="admonition-keypoints keypoints admonition" id="keypoints-0">
+<p class="admonition-title">Keypoints</p>
+<ul class="simple">
+<li><p>Browse example galleries for inspiration.</p></li>
+<li><p>Minimize manual post-processing.</p></li>
+<li><p>CSV files are good for storing data for visualization.</p></li>
+<li><p>Load data into R dataframes and plot using ggplot2.</p></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright CodeRefinery project.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

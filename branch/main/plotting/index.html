@@ -1,0 +1,389 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plotting with Vega-Altair &mdash; Introduction to Programming for Data Science  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_lesson.css?v=e9df6548" />
+      <link rel="stylesheet" type="text/css" href="../_static/term_role_formatting.css?v=4194e21c" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_rtd_theme_ext_color_contrast.css?v=8e8ea19f" />
+      <link rel="stylesheet" type="text/css" href="../_static/style.css?v=e4194741" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=187304be"></script>
+      <script src="../_static/doctools.js?v=9a2dae69"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/minipres.js?v=a0d29692"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex/" />
+    <link rel="search" title="Search" href="../search/" />
+    <link rel="next" title="Software install instructions" href="../installation/" />
+    <link rel="prev" title="Working with data in Python" href="../data/" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../" class="icon icon-home">
+            Introduction to Programming for Data Science
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search/" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Episodes</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro_to_programming/">Basics of Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../jupyter/">Jupyter Notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../python-basics/">Python basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../r-basics/">R basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data/">Working with data in Python</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Plotting with Vega-Altair</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#repeatability-reproducibility">Repeatability/reproducibility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#why-are-we-starting-with-vega-altair">Why are we starting with Vega-Altair?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reading-data-into-a-dataframe">Reading data into a dataframe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#plotting-the-data">Plotting the data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#themes">Themes</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/">Software install instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../colab/">Going through the course using Google Colab</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Other materials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../tidy-data/">Tidy data and dealing with messy data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../customizing-plots/">Customizing plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/">Learning how to adapt existing gallery examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sharing/">Sharing plots and notebooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parsing-custom-format/">Reading data in custom format</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../">Introduction to Programming for Data Science</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Plotting with Vega-Altair</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/coderefinery/programming4ds/blob/main/content/plotting.md" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="plotting-with-vega-altair">
+<h1>Plotting with <a class="reference external" href="https://altair-viz.github.io/">Vega-Altair</a><a class="headerlink" href="#plotting-with-vega-altair" title="Link to this heading"></a></h1>
+<div class="admonition-objectives objectives admonition" id="objectives-0">
+<p class="admonition-title">Objectives</p>
+<ul class="simple">
+<li><p>Be able to create simple plots with Vega-Altair and tweak them</p></li>
+<li><p>Know how to look for help</p></li>
+<li><p>Know how to tweak example plots from a gallery for your own purpose</p></li>
+<li><p>We will build up
+<a class="reference external" href="https://nbviewer.org/github/coderefinery/data-visualization-python/blob/main/notebooks/plotting.ipynb">this notebook</a>
+(spoiler alert!)</p></li>
+</ul>
+</div>
+<section id="repeatability-reproducibility">
+<h2>Repeatability/reproducibility<a class="headerlink" href="#repeatability-reproducibility" title="Link to this heading"></a></h2>
+<p>From <a class="reference external" href="https://clauswilke.com/dataviz/">Claus O. Wilke: “Fundamentals of Data Visualization”</a>:</p>
+<blockquote>
+<div><p><em>One thing I have learned over the years is that automation is your friend. I
+think figures should be autogenerated as part of the data analysis pipeline
+(which should also be automated), and they should come out of the pipeline
+ready to be sent to the printer, no manual post-processing needed.</em></p>
+</div></blockquote>
+<ul class="simple">
+<li><p><strong>Try to minimize manual post-processing</strong>. This could bite you when you need to regenerate 50
+figures one day before submission deadline or regenerate a set of figures
+after the person who created them left the group.</p></li>
+<li><p>There is not the one perfect language and <strong>not the one perfect library</strong> for everything.</p></li>
+<li><p>Within Python, many libraries exist:</p>
+<ul>
+<li><p><a class="reference external" href="https://altair-viz.github.io/gallery/index.html">Vega-Altair</a>:
+declarative visualization, statistics built in</p></li>
+<li><p><a class="reference external" href="https://matplotlib.org/stable/gallery/index.html">Matplotlib</a>:
+probably the most standard and most widely used</p></li>
+<li><p><a class="reference external" href="https://seaborn.pydata.org/examples/index.html">Seaborn</a>:
+high-level interface to Matplotlib, statistical functions built in</p></li>
+<li><p><a class="reference external" href="https://plotly.com/python/">Plotly</a>:
+interactive graphs</p></li>
+<li><p><a class="reference external" href="https://demo.bokeh.org/">Bokeh</a>:
+also here good for interactivity</p></li>
+<li><p><a class="reference external" href="https://plotnine.readthedocs.io/">plotnine</a>:
+implementation of a grammar of graphics in Python, it is based on <a class="reference external" href="https://ggplot2.tidyverse.org/">ggplot2</a></p></li>
+<li><p><a class="reference external" href="https://yhat.github.io/ggpy/">ggplot</a>:
+R users will be more at home</p></li>
+<li><p><a class="reference external" href="https://www.pyngl.ucar.edu/Examples/gallery.shtml">PyNGL</a>:
+used in the weather forecast community</p></li>
+<li><p><a class="reference external" href="https://k3d-jupyter.org/gallery/index.html">K3D</a>:
+Jupyter Notebook extension for 3D visualization</p></li>
+<li><p><a class="reference external" href="https://docs.enthought.com/mayavi/mayavi/">Mayavi</a>:
+3D scientific data visualization and plotting in Python</p></li>
+<li><p>…</p></li>
+</ul>
+</li>
+<li><p>Two main families of libraries: procedural (e.g. Matplotlib) and declarative (e.g. Vega-Altair).</p></li>
+</ul>
+</section>
+<section id="why-are-we-starting-with-vega-altair">
+<h2>Why are we starting with <a class="reference external" href="https://altair-viz.github.io/">Vega-Altair</a>?<a class="headerlink" href="#why-are-we-starting-with-vega-altair" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Concise and powerful</p></li>
+<li><p>“Simple, friendly and consistent API” allows us to focus on the data
+visualization part and get started without too much Python knowledge</p></li>
+<li><p>The way it <strong>combines visual channels with data columns</strong> can feel intuitive</p></li>
+<li><p>Interfaces very nicely with <a class="reference external" href="https://pandas.pydata.org/">Pandas</a></p></li>
+<li><p>Easy to change figures</p></li>
+<li><p>Good documentation</p></li>
+<li><p>Open source</p></li>
+<li><p>Makes it easy to save figures in a number of formats (svg, png, html)</p></li>
+<li><p>Easy to save interactive visualizations to be used in websites</p></li>
+</ul>
+</section>
+<section id="reading-data-into-a-dataframe">
+<h2>Reading data into a dataframe<a class="headerlink" href="#reading-data-into-a-dataframe" title="Link to this heading"></a></h2>
+<p>From the previous section, let’s load the data in our jupyter notebook and fix the dates.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">url_prefix</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/coderefinery/data-visualization-python/main/data/&quot;</span>
+
+<span class="n">data_tromso</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url_prefix</span> <span class="o">+</span> <span class="s2">&quot;tromso-monthly.csv&quot;</span><span class="p">)</span>
+<span class="n">data_oslo</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url_prefix</span> <span class="o">+</span> <span class="s2">&quot;oslo-monthly.csv&quot;</span><span class="p">)</span>
+
+<span class="hll"><span class="n">data_monthly</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">data_tromso</span><span class="p">,</span> <span class="n">data_oslo</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</span>
+<span class="c1"># replace mm.yyyy to date format</span>
+<span class="n">data_monthly</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">data_monthly</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">]),</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;%m.%Y&quot;</span><span class="p">)</span>
+
+<span class="c1"># let us print the combined result</span>
+<span class="n">data_monthly</span>
+</pre></div>
+</div>
+</section>
+<section id="plotting-the-data">
+<h2>Plotting the data<a class="headerlink" href="#plotting-the-data" title="Link to this heading"></a></h2>
+<p>Now let’s plot the data. We will start with a plot that is not optimal and
+then we will explore and improve a bit as we go:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">altair</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">alt</span>
+
+<span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">data_monthly</span><span class="p">)</span><span class="o">.</span><span class="n">mark_bar</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;date&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;precipitation&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default" id="id1">
+<img alt="Monthly precipitation for the cities Oslo and Tromsø over the course of a year." src="../_images/precipitation-on-top.svg" />
+<figcaption>
+<p><span class="caption-text">Monthly precipitation for the cities Oslo and Tromsø over the course of a year.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition-let-us-pause-and-explain-the-code discussion important admonition" id="discussion-0">
+<p class="admonition-title">Let us pause and explain the code</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">alt</span></code> is a short-hand for <code class="docutils literal notranslate"><span class="pre">altair</span></code> which we imported on top of the notebook</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Chart()</span></code> is a function defined inside <code class="docutils literal notranslate"><span class="pre">altair</span></code> which takes the data as argument</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mark_bar()</span></code> is a function that produces bar charts</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">encode()</span></code> is a function which encodes data columns to <strong>visual channels</strong></p></li>
+</ul>
+<p>Observe how we connect (encode) <strong>visual channels</strong> to data columns:</p>
+<ul class="simple">
+<li><p>x-coordinate with “date”</p></li>
+<li><p>y-coordinate with “precipitation”</p></li>
+<li><p>color with “name” (name of weather station; city)</p></li>
+</ul>
+</div>
+<p>We can improve the plot by giving Vega-Altair a bit more information that the
+x-axis is <strong>temporal</strong> (T) and that we would like to see the year and
+month (yearmonth):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">data_monthly</span><span class="p">)</span><span class="o">.</span><span class="n">mark_bar</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+<span class="hll">    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;yearmonth(date):T&quot;</span><span class="p">,</span>
+</span>    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;precipitation&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Apart from T (temporal), there are other
+<a class="reference external" href="https://altair-viz.github.io/user_guide/encodings/index.html#encoding-data-types">encoding data types</a>:</p>
+<ul class="simple">
+<li><p>Q (quantitative)</p></li>
+<li><p>O (ordinal)</p></li>
+<li><p>N (nominal)</p></li>
+<li><p>T (temporal)</p></li>
+<li><p>G (geojson)</p></li>
+</ul>
+<figure class="align-default" id="id2">
+<img alt="Monthly precipitation for the cities Oslo and Tromsø over the course of a year." src="../_images/precipitation-on-top-yearmonth.svg" />
+<figcaption>
+<p><span class="caption-text">Monthly precipitation for the cities Oslo and Tromsø over the course of a year.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Let us improve the plot with another one-line change:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">data_monthly</span><span class="p">)</span><span class="o">.</span><span class="n">mark_bar</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;yearmonth(date):T&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;precipitation&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="p">,</span>
+<span class="hll">    <span class="n">column</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="p">,</span>
+</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default" id="id3">
+<img alt="Monthly precipitation for the cities Oslo and Tromsø over the course of a year with with both cities plotted side by side." src="../_images/precipitation-side.svg" />
+<figcaption>
+<p><span class="caption-text">Monthly precipitation for the cities Oslo and Tromsø over the course of a year with with both cities plotted side by side.</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>With another one-line change we can make the bar chart stacked:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">data_monthly</span><span class="p">)</span><span class="o">.</span><span class="n">mark_bar</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;yearmonth(date):T&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;precipitation&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="p">,</span>
+<span class="hll">    <span class="n">xOffset</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="p">,</span>
+</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default" id="id4">
+<img alt="Monthly precipitation for the cities Oslo and Tromsø over the course of a year with with both cities plotted side by side." src="../_images/precipitation-stacked-x.svg" />
+<figcaption>
+<p><span class="caption-text">Monthly precipitation for the cities Oslo and Tromsø over the course of a year
+plotted as stacked bar chart.</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>This is not publication-quality yet but a really good start!</p>
+<p>Let us try one more example where we can nicely see how Vega-Altair
+is able to map visual channels to data columns:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">alt</span><span class="o">.</span><span class="n">Chart</span><span class="p">(</span><span class="n">data_monthly</span><span class="p">)</span><span class="o">.</span><span class="n">mark_area</span><span class="p">(</span><span class="n">opacity</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="s2">&quot;yearmonth(date):T&quot;</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">=</span><span class="s2">&quot;max temperature&quot;</span><span class="p">,</span>
+    <span class="n">y2</span><span class="o">=</span><span class="s2">&quot;min temperature&quot;</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-default" id="id5">
+<img alt="Monthly temperature ranges for two cities in Norway." src="../_images/temperature-ranges-combined.svg" />
+<figcaption>
+<p><span class="caption-text">Monthly temperature ranges for two cities in Norway.</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition-what-other-marks-and-other-visual-channels-exist discussion important admonition" id="discussion-1">
+<p class="admonition-title">What other marks and other visual channels exist?</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://altair-viz.github.io/user_guide/marks/index.html">Overview of available marks</a></p></li>
+<li><p><a class="reference external" href="https://altair-viz.github.io/user_guide/encodings/channels.html">Overview of available visual channels</a></p></li>
+<li><p><a class="reference external" href="https://altair-viz.github.io/gallery/index.html">Gallery of examples</a></p></li>
+</ul>
+</div>
+</section>
+<section id="themes">
+<h2>Themes<a class="headerlink" href="#themes" title="Link to this heading"></a></h2>
+<p>In <a class="reference external" href="https://altair-viz.github.io/">Vega-Altair</a> you can change the theme and
+select from a long <a class="reference external" href="https://github.com/vega/vega-themes">list of themes</a>.  On
+top of your notebook try to add:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">alt</span><span class="o">.</span><span class="n">themes</span><span class="o">.</span><span class="n">enable</span><span class="p">(</span><span class="s1">&#39;dark&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then re-run all cells. Later you can try some other themes such as:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fivethirtyeight</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">latimes</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">urbaninstitute</span></code></p></li>
+</ul>
+<p>You can even define your own themes!</p>
+<div class="admonition-discover-the-vega-altair-gallery-of-examples exercise important admonition" id="exercise-0">
+<p class="admonition-title">Discover the Vega-Altair gallery of examples</p>
+<p>Try to rerun some examples from the <a class="reference external" href="https://altair-viz.github.io/gallery/index.html">Gallery of examples</a>. Which one did you choose? Were you able to reproduce the figures? Did you try `alt.themes.enable(‘dark’)?</p>
+<p><strong>Note: you will need to first run in a cell the command <code class="docutils literal notranslate"><span class="pre">!pip</span> <span class="pre">install</span> <span class="pre">vega_datasets</span></code> to make the demo data available.</strong></p>
+</div>
+<hr class="docutils" />
+<div class="admonition-keypoints keypoints admonition" id="keypoints-0">
+<p class="admonition-title">Keypoints</p>
+<ul class="simple">
+<li><p>Browse a number of example galleries to help you choose the library
+that fits best your work/style.</p></li>
+<li><p>Minimize manual post-processing and try to script all steps.</p></li>
+<li><p>CSV (comma-separated values) files are often a good format to store the data
+that we wish to plot.</p></li>
+<li><p>Read the data into a Pandas dataframe and then plot it with Vega-Altair
+where you connect data columns to
+<a class="reference external" href="https://altair-viz.github.io/user_guide/encodings/channels.html">visual channels</a>.</p></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../data/" class="btn btn-neutral float-left" title="Working with data in Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../installation/" class="btn btn-neutral float-right" title="Software install instructions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright CodeRefinery project.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
